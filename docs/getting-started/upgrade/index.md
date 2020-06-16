@@ -1,6 +1,7 @@
 ---
 title: Upgrade Shopify App CLI
 section: getting-started
+redirect_from: "/migrate/"
 ---
 
 ## Upgrading the Shopify App CLI package
