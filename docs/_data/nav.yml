@@ -12,6 +12,8 @@ sidebar:
         url: /getting-started/upgrade/
       - title: Uninstall
         url: /getting-started/uninstall/
+      - title: Migrate from legacy version
+        url: /getting-started/migrate/
   - title: Core commands
     section: core
     url: /core/
