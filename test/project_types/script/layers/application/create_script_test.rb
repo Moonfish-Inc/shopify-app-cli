@@ -17,7 +17,8 @@ describe Script::Layers::Application::CreateScript do
   let(:script) { Script::Layers::Infrastructure::FakeScriptRepository.new.create_script(language, ep, script_name) }
   let(:task_runner) { stub(compiled_type: compiled_type) }
   let(:project_creator) { stub }
-  let(:script_project) { TestHelpers::FakeScriptProject.new(language: language) }
+  let(:project_directory) { '/path' }
+  let(:script_project) { TestHelpers::FakeScriptProject.new(language: language, directory: project_directory) }
 
   before do
     Script::ScriptProject.stubs(:current).returns(script_project)
@@ -29,7 +30,7 @@ describe Script::Layers::Application::CreateScript do
       .returns(task_runner)
     Script::Layers::Infrastructure::ProjectCreator
       .stubs(:for)
-      .with(@context, language, ep, script_name)
+      .with(@context, language, ep, script_name, project_directory)
       .returns(project_creator)
   end
 
