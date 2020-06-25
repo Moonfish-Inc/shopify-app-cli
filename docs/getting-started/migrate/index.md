@@ -11,7 +11,7 @@ As of version 0.9.0, Shopify App CLI is installed and managed as a software pack
 Prior to version 0.9.0, Shopify App CLI was installed as a Git repository. You can determine if you’re running a legacy version by running this command:
 
 ```console
-$ shopify --version
+$ shopify version
 ```
 
 If you get a “Command not found” error, then you’re using a legacy version and will need to uninstall it manually.
