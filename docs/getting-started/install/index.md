@@ -1,11 +1,11 @@
 ---
-title: Install Shopify CLI
+title: Install Shopify App CLI
 section: getting-started
 toc: false
 redirect_from: "/install/"
 ---
 
-Shopify CLI can be installed using a variety of package managers.
+Shopify App CLI can be installed using a variety of package managers.
 
 ### Ruby gem
 
@@ -15,7 +15,7 @@ $ gem install shopify-cli
 
 ### apt (Debian, Ubuntu)
 
-Currently, you’ll need to install a downloaded .deb file with an explicit version number. Make sure you check the [release page](#) to make sure you install the latest package.
+You’ll need to install a downloaded .deb file with an explicit version number. Make sure you check the [releases page](https://github.com/Shopify/shopify-app-cli/releases) to make sure you install the latest package.
 
 ```console
 $ apt install shopify-cli-x.y.z.deb
@@ -29,9 +29,9 @@ You’ll need to run `brew tap` first to add Shopify’s third-party repositorie
 $ brew tap shopify/shopify && brew install shopify-cli
 ```
 
-### RPM (CentOS, Fedora, RHEL, SUSE)
+### RPM (CentOS, Fedora, Red Hat, SUSE)
 
-Currently, you’ll need to install a downloaded .rpm file with an explicit version number. Make sure you check the [release page](#) to make sure you install the latest package.
+You’ll need to install a downloaded .rpm file with an explicit version number. Make sure you check the [releases page](https://github.com/Shopify/shopify-app-cli/releases) to make sure you install the latest package.
 
 ```console
 $ yum install shopify-cli-x.y.x.rpm

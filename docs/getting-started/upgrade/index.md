@@ -1,13 +1,13 @@
 ---
-title: Upgrade Shopify CLI
+title: Upgrade Shopify App CLI
 section: getting-started
 toc: false
 redirect_from: "/upgrade/"
 ---
 
-You can manage upgrades to Shopify CLI with the package manager for your platform.
+You can manage upgrades to Shopify App CLI with the package manager for your platform.
 
-### Ruby Gem
+### Ruby gem
 
 ```console
 $ gem update shopify-cli
@@ -25,7 +25,7 @@ $ apt update && apt upgrade shopify-cli
 $ brew update && brew upgrade shopify-cli
 ```
 
-### RPM (CentOS, Fedora, RHEL, SUSE)
+### RPM (CentOS, Fedora, Red Hat, SUSE)
 
 ```console
 $ yum upgrade shopify-cli
