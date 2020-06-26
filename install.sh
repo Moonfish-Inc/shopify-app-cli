@@ -179,28 +179,29 @@ check_executables() {
 
 clone_shopify_cli() {
   if [[ -d "${install_dir}/.git" ]]; then
-    bs_success_message "already have shopify-app-cli"
-  else
-    local git_url
-    git_url="${SHOPIFY_CLI_BOOTSTRAP_GIT_URL:-git@github.com:Moonfish-Inc/shopify-app-cli.git}"
-
-    # Very intentionally do the git clone as the logged in user so ssh keys aren't an issue.
-    mkdir -p "${install_dir}"
-    echo "Cloning Moonfish-Inc/shopify-app-cli into ${install_dir}"
-    false
-    (cd "${install_dir}" && git clone "${git_url}" .)
-    if [[ $? -ne 0 ]]; then
-      bs_error_message "git clone failed. Have you set up SSH keys yet?"
-      bs_error_message "https://help.github.com/articles/generating-an-ssh-key"
-      bs_error_message ""
-      bs_error_message "If you know that you've set up auth for HTTPS but not SSH, run:"
-      bs_error_message "  export SHOPIFY_CLI_BOOTSTRAP_GIT_URL=https://github.com/moonfish-inc/shopify-app-cli.git"
-      bs_error_message "And then run this script again."
-      exit 1
-    fi
-
-    bs_success_message "cloned Moonfish-Inc/shopify-app-cli"
+    echo "Removing existing shopify installation"
+    rm -rf "${install_dir}"
   fi
+
+  local git_url
+  git_url="${SHOPIFY_CLI_BOOTSTRAP_GIT_URL:-git@github.com:Moonfish-Inc/shopify-app-cli.git}"
+
+  # Very intentionally do the git clone as the logged in user so ssh keys aren't an issue.
+  mkdir -p "${install_dir}"
+  echo "Cloning Moonfish-Inc/shopify-app-cli into ${install_dir}"
+  false
+  (cd "${install_dir}" && git clone "${git_url}" .)
+  if [[ $? -ne 0 ]]; then
+    bs_error_message "git clone failed. Have you set up SSH keys yet?"
+    bs_error_message "https://help.github.com/articles/generating-an-ssh-key"
+    bs_error_message ""
+    bs_error_message "If you know that you've set up auth for HTTPS but not SSH, run:"
+    bs_error_message "  export SHOPIFY_CLI_BOOTSTRAP_GIT_URL=https://github.com/moonfish-inc/shopify-app-cli.git"
+    bs_error_message "And then run this script again."
+    exit 1
+  fi
+
+  bs_success_message "cloned Moonfish-Inc/shopify-app-cli"
 
   case "${shell}" in
     */bash)
