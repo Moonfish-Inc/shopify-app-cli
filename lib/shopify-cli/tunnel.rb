@@ -16,7 +16,7 @@ module ShopifyCli
     class FetchUrlError < RuntimeError; end
     class NgrokError < RuntimeError; end
 
-    PORT = 8081 # port that ngrok will bind to
+    PORT = 5000 # port that ngrok will bind to
     # mapping for supported operating systems for where to download ngrok from.
     DOWNLOAD_URLS = {
       mac: 'https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-darwin-amd64.zip',

@@ -50,7 +50,7 @@ install_dir="$HOME/.shopify-app-cli"
 
 postmsg() {
   echo -e "\x1b[36mshopify-app-cli\x1b[0m is installed!"
-  echo -e "Run \x1b[36mshopify help\x1b[0m to see what you can do, or read \x1b[36mhttps://github.com/Shopify/shopify-app-cli\x1b[0m."
+  echo -e "Run \x1b[36mshopify help\x1b[0m to see what you can do, or read \x1b[36mhttps://github.com/Moonfish-Inc/shopify-app-cli\x1b[0m."
   echo -e "To start developing on shopify, for example:"
   echo -e "  * run \x1b[36mshopify create\x1b[0m"
 }
@@ -182,11 +182,11 @@ clone_shopify_cli() {
     bs_success_message "already have shopify-app-cli"
   else
     local git_url
-    git_url="${SHOPIFY_CLI_BOOTSTRAP_GIT_URL:-git@github.com:shopify/shopify-app-cli.git}"
+    git_url="${SHOPIFY_CLI_BOOTSTRAP_GIT_URL:-git@github.com:Moonfish-Inc/shopify-app-cli.git}"
 
     # Very intentionally do the git clone as the logged in user so ssh keys aren't an issue.
     mkdir -p "${install_dir}"
-    echo "Cloning Shopify/shopify-app-cli into ${install_dir}"
+    echo "Cloning Moonfish-Inc/shopify-app-cli into ${install_dir}"
     false
     (cd "${install_dir}" && git clone "${git_url}" .)
     if [[ $? -ne 0 ]]; then
@@ -194,12 +194,12 @@ clone_shopify_cli() {
       bs_error_message "https://help.github.com/articles/generating-an-ssh-key"
       bs_error_message ""
       bs_error_message "If you know that you've set up auth for HTTPS but not SSH, run:"
-      bs_error_message "  export SHOPIFY_CLI_BOOTSTRAP_GIT_URL=https://github.com/shopify/shopify-app-cli.git"
+      bs_error_message "  export SHOPIFY_CLI_BOOTSTRAP_GIT_URL=https://github.com/moonfish-inc/shopify-app-cli.git"
       bs_error_message "And then run this script again."
       exit 1
     fi
 
-    bs_success_message "cloned shopify/shopify-app-cli"
+    bs_success_message "cloned Moonfish-Inc/shopify-app-cli"
   fi
 
   case "${shell}" in
