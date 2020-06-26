@@ -454,13 +454,13 @@ else
   \bash "${tempfile}"
   if \test $? -eq 0; then
     \rm -f "${tempfile}"
-    # re-exec the user's shell to pick up the new shopify-app-cli function.
+    # source the shopify script so it's available in the current shell
     case "$(\uname -s)" in
       Darwin)
-        \exec "$(\dscl . -read "/Users/${LOGNAME}" UserShell | /usr/bin/awk '{print $NF}')" --login
+        \source "$HOME/.shopify-app-cli/shopify.sh"
         ;;
       Linux)
-        \exec "$(\getent passwd "${LOGNAME}" | \cut -d: -f7)" --login
+        \source "$HOME/.shopify-app-cli/shopify.sh"
         ;;
       *)
         \echo "Unsupported platform!" >&2
