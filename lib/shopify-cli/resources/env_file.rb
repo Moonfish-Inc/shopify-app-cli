@@ -30,7 +30,7 @@ module ShopifyCli
               # Remove single quotes
               when /\A'(.*)'\z/ then match[2]
               # Remove double quotes and unescape string preserving newline characters
-              when /\A"(.*)"\z/ then match[2].gsub('\n', "\n").gsub(/\\(.)/, '\1')
+              when /\A"(.*)"\z/ then match[2].gsub('\n', "\n").gsub(/\\(.)/, '\1').gsub("\"", "")
               else match[2]
               end
             end
