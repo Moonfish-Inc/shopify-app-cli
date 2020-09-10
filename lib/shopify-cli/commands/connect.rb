@@ -83,6 +83,7 @@ module ShopifyCli
         extra = {} if extra.nil?
 
         Resources::EnvFile.new(
+          app_name: app.first["title"],
           api_key: app.first["apiKey"],
           secret: app.first["apiSecretKeys"].first["secret"],
           shop: shop,

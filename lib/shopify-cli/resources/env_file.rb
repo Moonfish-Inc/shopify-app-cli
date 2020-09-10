@@ -6,6 +6,7 @@ module ShopifyCli
       include SmartProperties
       FILENAME = '.env'
       KEY_MAP = {
+        'APP_NAME' => :app_name,
         'SHOPIFY_API_KEY' => :api_key,
         'SHOPIFY_API_SECRET' => :secret,
         'SHOP' => :shop,
@@ -52,6 +53,7 @@ module ShopifyCli
         end
       end
 
+      property :app_name, required: true
       property :api_key, required: true
       property :secret, required: true
       property :shop
@@ -75,7 +77,7 @@ module ShopifyCli
         spin_group.add(ctx.message('core.env_file.saving_header', FILENAME)) do |spinner|
           output = []
           KEY_MAP.each do |key, value|
-            output << "#{key}=#{send(value)}" if send(value)
+            output << "#{key}=\"#{send(value)}\"" if send(value)
           end
           extra.each do |key, value|
             output << "#{key}=#{value}"
