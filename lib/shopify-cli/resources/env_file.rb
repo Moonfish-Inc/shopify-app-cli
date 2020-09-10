@@ -77,7 +77,11 @@ module ShopifyCli
         spin_group.add(ctx.message('core.env_file.saving_header', FILENAME)) do |spinner|
           output = []
           KEY_MAP.each do |key, value|
-            output << "#{key}=\"#{send(value)}\"" if send(value)
+            if key == 'APP_NAME' 
+              output << "#{key}=\"#{send(value)}\"" if send(value)
+            else
+              output << "#{key}=#{send(value)}" if send(value)
+            end
           end
           extra.each do |key, value|
             output << "#{key}=#{value}"
