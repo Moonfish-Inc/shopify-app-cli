@@ -9,11 +9,12 @@ module ShopifyCli
         api_key = project.env.api_key
         result = ShopifyCli::PartnersAPI.query(ctx, 'get_app_urls', apiKey: api_key)
         app = result['data']['app']
-        consent = check_application_url(app['applicationUrl'], url)
+        new_url = "#{url}/shopify"
+        consent = check_application_url(app['applicationUrl'], new_url)
         constructed_urls = construct_redirect_urls(app['redirectUrlWhitelist'], url, callback_url)
-        return if url == app['applicationUrl']
+        return if new_url == app['applicationUrl']
         ShopifyCli::PartnersAPI.query(@ctx, 'update_dashboard_urls', input: {
-          applicationUrl: consent ? url : app['applicationUrl'],
+          applicationUrl: consent ? new_url : app['applicationUrl'],
           redirectUrlWhitelist: constructed_urls, apiKey: api_key
         })
         @ctx.puts(@ctx.message('core.tasks.update_dashboard_urls.updated'))
